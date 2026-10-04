@@ -1,9 +1,9 @@
 ---
-name: architecture-motion-video
+name: architecture-flow
 description: Create and revise editorial architecture MP4 videos from reference images or videos and verified project evidence, in plush mascot, dark terminal, or light pastel panel styles, with flowing connectors and optional original instrumental music, editable rendering source, and export validation.
 ---
 
-# Architecture motion video
+# Architecture Flow
 
 交付可播放的 MP4、封面、可编辑源码和验证记录。本 Skill 附带 12 个透明毛绒角色、固定节点网页渲染模板、原创音乐生成器和视频验证器。
 
@@ -35,7 +35,7 @@ description: Create and revise editorial architecture MP4 videos from reference 
 
 ## 终端命令
 
-仓库支持 `pip install .`，然后用 `architecture-motion-video render --out demo.mp4` 自动生成音乐、视频并解码检查；`init --out render.json` 保存渲染配置，`check demo.mp4` 验证视频。命令行参数优先于JSON。plush的JSON仅保存渲染参数；面板可另用panel_config定义节点、连线与模拟状态。详见运行说明。
+仓库支持 `pip install .`，然后用 `architecture-flow render --out demo.mp4` 自动生成音乐、视频并解码检查；`init --out render.json` 保存渲染配置，`check demo.mp4` 验证视频。命令行参数优先于JSON。plush的JSON仅保存渲染参数；面板可另用panel_config定义节点、连线与模拟状态。详见运行说明。
 
 ## 附带资源
 

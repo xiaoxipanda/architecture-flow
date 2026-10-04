@@ -12,7 +12,7 @@ class PlushWebTests(unittest.TestCase):
     def test_plush_cli_produces_live_html_and_source_config(self):
         with tempfile.TemporaryDirectory() as directory:
             out = Path(directory)/'preview.mp4'
-            result = subprocess.run([sys.executable, '-m', 'architecture_motion_video.cli',
+            result = subprocess.run([sys.executable, '-m', 'architecture_flow.cli',
                 'render', '--out', str(out), '--poster-only', '--duration', '2'],
                 capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -32,7 +32,7 @@ class PlushWebTests(unittest.TestCase):
 
 class ArcLengthTests(unittest.TestCase):
     def test_speed_does_not_change_density(self):
-        from architecture_motion_video.scripts.plush_scene import route
+        from architecture_flow.scripts.plush_scene import route
         curve=[[0,0],[0,100],[200,100],[200,0]]
         slow=route(curve,'#aabbcc',80,23)
         fast=route(curve,'#aabbcc',160,23)
@@ -40,7 +40,7 @@ class ArcLengthTests(unittest.TestCase):
         self.assertGreater(route(curve,'#aabbcc',80,12)['count'],slow['count'])
 
     def test_arc_length_matches_straight_line(self):
-        from architecture_motion_video.scripts.plush_scene import route
+        from architecture_flow.scripts.plush_scene import route
         curve=[[0,0],[100,0],[200,0],[300,0]]
         path=route(curve,'#aabbcc',160,23)
         self.assertAlmostEqual(path['length'],300)

@@ -1,1 +1,1 @@
-"""Architecture motion video command-line toolkit."""
+"""Architecture Flow command-line toolkit."""

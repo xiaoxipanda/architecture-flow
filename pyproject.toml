@@ -3,8 +3,8 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "architecture-motion-video"
-version = "0.4.0"
+name = "architecture-flow"
+version = "0.4.1"
 description = "Editorial architecture videos with flowing connectors and 3D mascots"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,11 +12,12 @@ license = {text = "MIT"}
 dependencies = ["Pillow>=10.0,<13", "numpy>=1.24,<3"]
 
 [project.scripts]
-architecture-motion-video = "architecture_motion_video.cli:main"
+architecture-flow = "architecture_flow.cli:main"
+architecture-motion-video = "architecture_flow.cli:main"
 
 [tool.setuptools]
-packages = ["architecture_motion_video"]
-package-dir = {architecture_motion_video = "."}
+packages = ["architecture_flow"]
+package-dir = {architecture_flow = "."}
 
 [tool.setuptools.package-data]
-architecture_motion_video = ["SKILL.md", "scripts/*.py", "assets/mascots/*.png", "assets/mascots/*.json", "references/*.md", "assets/panel-*.json", "assets/plush.html", "vendor/live_panel/scripts/*.py", "vendor/live_panel/assets/*.html", "vendor/live_panel/LICENSE", "vendor/live_panel/*.md"]
+architecture_flow = ["SKILL.md", "scripts/*.py", "assets/mascots/*.png", "assets/mascots/*.json", "references/*.md", "assets/panel-*.json", "assets/plush.html", "vendor/live_panel/scripts/*.py", "vendor/live_panel/assets/*.html", "vendor/live_panel/LICENSE", "vendor/live_panel/*.md"]

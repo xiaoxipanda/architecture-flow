@@ -57,7 +57,7 @@ def settings(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Architecture videos: fixed nodes, flowing connectors, original music")
-    parser.add_argument("--version", action="version", version="%(prog)s 0.4.0")
+    parser.add_argument("--version", action="version", version="%(prog)s 0.4.1")
     commands = parser.add_subparsers(dest="command", required=True)
     render = commands.add_parser("render", help="Render the editable Hermes architecture template")
     render.add_argument("--out", type=Path, required=True)

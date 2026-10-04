@@ -1,4 +1,4 @@
-# Architecture Motion Video
+# Architecture Flow · 流动架构
 
 Create architecture videos in three styles: plush mascot infographics, dark terminal panels, and light pastel panels. Includes a CLI, a reusable AI skill, editable sources, and original instrumental music.
 
@@ -24,27 +24,29 @@ Create architecture videos in three styles: plush mascot infographics, dark term
 需要 **Python 3.10+、Chrome 或 Chromium、FFmpeg**；毛绒风格还需要中文及标题字体。仓库不附带这些程序或系统字体。
 
 ```sh
-git clone https://github.com/xiaoxipanda/architecture-motion-video.git
-cd architecture-motion-video
+git clone https://github.com/xiaoxipanda/architecture-flow.git
+cd architecture-flow
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install .
 
 # 三种风格使用同一命令，默认生成 30 秒视频和原创背景音乐
-architecture-motion-video render --style plush --out output/plush.mp4
-architecture-motion-video render --style terminal-dark --out output/terminal.mp4
-architecture-motion-video render --style light-pastel --out output/pastel.mp4
+architecture-flow render --style plush --out output/plush.mp4
+architecture-flow render --style terminal-dark --out output/terminal.mp4
+architecture-flow render --style light-pastel --out output/pastel.mp4
 ```
+
+项目已更名为 `architecture-flow`，Python 包名为 `architecture_flow`；旧终端命令 `architecture-motion-video` 保留为兼容入口。
 
 省略 `--style` 默认使用 `plush`。每次导出都会检查视频编码、尺寸、时长，并完整解码验证。默认输出为 H.264 / yuv420p MP4、30 fps。
 
 macOS 自动检测标准安装位置的 Chrome，毛绒模板默认使用 macOS 字体。其他系统或自定义安装位置可指定：
 
 ```sh
-architecture-motion-video render --style terminal-dark --out output/dark.mp4 \
+architecture-flow render --style terminal-dark --out output/dark.mp4 \
   --chrome /path/to/chrome --ffmpeg /path/to/ffmpeg
 
-architecture-motion-video render --style plush --out output/custom-fonts.mp4 \
+architecture-flow render --style plush --out output/custom-fonts.mp4 \
   --cn-font /path/to/chinese.ttf --serif-font /path/to/serif.ttf \
   --bold-font /path/to/bold.ttf --mono-font /path/to/mono.ttf
 ```
@@ -55,15 +57,15 @@ architecture-motion-video render --style plush --out output/custom-fonts.mp4 \
 
 ```sh
 # 降低速度，保留原有密度
-architecture-motion-video render --out output/slower.mp4 --speed 100 --spacing 23
+architecture-flow render --out output/slower.mp4 --speed 100 --spacing 23
 
 # 面板默认速度 80 px/s；缩小间距可以增加光点
-architecture-motion-video render --style terminal-dark --out output/denser.mp4 \
+architecture-flow render --style terminal-dark --out output/denser.mp4 \
   --speed 80 --spacing 120 --duration 20
 
 # 无声视频 / 使用自己的音乐
-architecture-motion-video render --out output/silent.mp4 --music none
-architecture-motion-video render --out output/custom-music.mp4 --music /path/to/music.wav
+architecture-flow render --out output/silent.mp4 --music none
+architecture-flow render --out output/custom-music.mp4 --music /path/to/music.wav
 ```
 
 | 参数 | 默认值 | 作用 |
@@ -88,19 +90,19 @@ CLI 默认配乐；直接调用旧的 `scripts/render_hermes_template.py` 时，
 ### 深色终端 / 浅色粉彩
 
 ```sh
-architecture-motion-video init --style terminal-dark --out terminal.json
+architecture-flow init --style terminal-dark --out terminal.json
 # 生成 terminal.json（渲染参数）和 terminal-panel.json（架构内容）
 # 编辑内容后渲染
-architecture-motion-video render --config terminal.json --out output/my-terminal.mp4
+architecture-flow render --config terminal.json --out output/my-terminal.mp4
 
-architecture-motion-video init --style light-pastel --out pastel.json
-architecture-motion-video render --config pastel.json --out output/my-pastel.mp4
+architecture-flow init --style light-pastel --out pastel.json
+architecture-flow render --config pastel.json --out output/my-pastel.mp4
 ```
 
 也可以直接提供架构内容：
 
 ```sh
-architecture-motion-video render --style light-pastel \
+architecture-flow render --style light-pastel \
   --panel-config pastel-panel.json --out output/custom-panel.mp4
 ```
 
@@ -109,8 +111,8 @@ architecture-motion-video render --style light-pastel \
 ### 毛绒角色
 
 ```sh
-architecture-motion-video init --out render.json
-architecture-motion-video render --config render.json --out output/my-plush.mp4
+architecture-flow init --out render.json
+architecture-flow render --config render.json --out output/my-plush.mp4
 ```
 
 毛绒风格的输入 JSON 配置渲染参数；架构文案、角色和布局在 [场景定义](scripts/plush_scene.py) 的 `ROLES`、卡片与路线中修改，页面与动画模板在 [assets/plush.html](assets/plush.html)。默认使用六个工作流角色，附带六个扩展角色供新架构选择。
@@ -121,11 +123,11 @@ architecture-motion-video render --config render.json --out output/my-plush.mp4
 
 ```sh
 # 先看封面与关键帧，再决定是否导出完整视频
-architecture-motion-video render --style light-pastel \
+architecture-flow render --style light-pastel \
   --out output/preview.mp4 --poster-only
 
 # 验证已有视频，自动识别尺寸并完整解码
-architecture-motion-video check output/pastel.mp4
+architecture-flow check output/pastel.mp4
 ```
 
 以 `output/pastel.mp4` 为例，辅助文件保存在 `output/pastel-assets/`：封面、关键帧、渲染参数以及自动生成的音乐。毛绒版另外保存 `plush.json`、`plush.html` 和 `web-validation.json`；面板保存 `panel.json`、`panel.html` 和布局检查帧。三种风格的 HTML 均可直接在浏览器中打开并持续播放，角色图片已嵌入毛绒页面。毛绒默认字体使用浏览器系统字体回退，自定义字体参数会将所选字体嵌入生成页面；跨机器播放时，默认字体可能有所差异。
@@ -140,16 +142,16 @@ architecture-motion-video check output/pastel.mp4
 
 | 使用环境 | 安装目录 |
 |---|---|
-| Codex | `~/.codex/skills/architecture-motion-video` |
-| Hermes | `~/.hermes/skills/architecture-motion-video` |
+| Codex | `~/.codex/skills/architecture-flow` |
+| Hermes | `~/.hermes/skills/architecture-flow` |
 
 将完整仓库放入对应目录，或链接已有仓库；目录已存在时先保留现有版本。CLI 的 Python 环境与 FFmpeg / Chrome 依赖仍需按上文准备。
 
 Codex 中可以这样触发：
 
-> 用 $architecture-motion-video 制作 Hermes 一人企业架构视频，使用 terminal-dark 深色终端风格。节点从第一帧显示，连线持续流动，配简单音乐，不要语音解说。
+> 用 $architecture-flow 制作 Hermes 一人企业架构视频，使用 terminal-dark 深色终端风格。节点从第一帧显示，连线持续流动，配简单音乐，不要语音解说。
 
-把风格改成 `light-pastel` 可生成粉彩运行面板，改成 `plush` 可生成毛绒角色信息图。Hermes 中可直接点名 `architecture-motion-video` 并说明风格、架构与输出要求。
+把风格改成 `light-pastel` 可生成粉彩运行面板，改成 `plush` 可生成毛绒角色信息图。Hermes 中可直接点名 `architecture-flow` 并说明风格、架构与输出要求。
 
 本 Skill 负责参考分析、核实架构、选择素材、生成可编辑源文件、渲染与验证。独立的 `live-panel` Skill 可以继续使用，无需合并或卸载。
 

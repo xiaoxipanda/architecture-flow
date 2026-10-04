@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from architecture_motion_video.cli import settings
+from architecture_flow.cli import settings
 
 class StyleSettingsTests(unittest.TestCase):
     def test_existing_configs_keep_plush_default(self):
