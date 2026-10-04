@@ -57,7 +57,7 @@ def settings(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Architecture videos: fixed nodes, flowing connectors, original music")
-    parser.add_argument("--version", action="version", version="%(prog)s 0.3.0")
+    parser.add_argument("--version", action="version", version="%(prog)s 0.4.0")
     commands = parser.add_subparsers(dest="command", required=True)
     render = commands.add_parser("render", help="Render the editable Hermes architecture template")
     render.add_argument("--out", type=Path, required=True)
@@ -154,6 +154,8 @@ def main():
             if data["style"] == "plush":
                 if data.get("panel_config"):
                     raise ValueError("panel_config is for panel styles")
+                if data.get("chrome"):
+                    argv += ["--chrome", data["chrome"]]
                 run("render_hermes_template.py", argv)
             else:
                 # Font/atlas overrides apply to the plush renderer, not HTML panels.

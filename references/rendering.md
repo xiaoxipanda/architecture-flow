@@ -2,9 +2,9 @@
 
 ## 依赖与案例边界
 
-Python 3，Pillow、NumPy，FFmpeg。模板预设 macOS 系统字体，不打包字体或 FFmpeg。其他环境用 --fonts-dir 指定字体目录，或修改FONTS使中文字体、衬线标题与粗体正确解析；不能静默使用缺失中文字形的字体。选择环境已有运行时，不为了视频更改生产服务。
+Python 3.10+、Pillow、NumPy、Chrome/Chromium、FFmpeg。三种风格均以HTML/CSS/SVG和JavaScript绘制，Python驱动Chrome截图与导出。Pillow仅处理角色图片和字体度量。模板预设 macOS 系统字体，不打包字体或 FFmpeg。其他环境用 --fonts-dir 指定字体目录，或显式指定 --cn-font、--serif-font、--bold-font、--mono-font，使中文字体、衬线标题与粗体正确解析；不能静默使用缺失中文字形的字体。选择环境已有运行时，不为了视频更改生产服务。
 
-模板目前是 Hermes 的六工作流案例；修改 roles、卡片位置、文案和 paths 即可适配新架构。节点数量变化需调整图集索引、卡片和连线，不能只改岗位标题。不得用扩展图集冒充已新增岗位。
+模板目前是 Hermes 的六工作流案例；修改 scripts/plush_scene.py 中的 ROLES、卡片位置、文案和路线 即可适配新架构。节点数量变化需调整图集索引、卡片和连线，不能只改岗位标题。不得用扩展图集冒充已新增岗位。
 
 ## 示例命令
 
@@ -17,12 +17,15 @@ python3 scripts/render_hermes_template.py --output-dir /absolute/output --durati
 python3 scripts/validate_video.py /absolute/output/architecture.mp4 --ffmpeg /absolute/path/to/ffmpeg --width 1080 --height 1600 --min-duration 29
 ```
 
-复制源码到项目修改时，脚本中的 SKILL 路径需指向本 Skill 的实际路径，或显式传 --atlas 指向图集。独立发给别人时同时带上素材和依赖说明。
+复制完整仓库到项目修改，保留 scripts、assets 与 vendor 的相对结构。脚本使用 ROOT 定位资源，可显式传 --atlas 指向图集、--chrome 指向浏览器。独立发给别人时同时带上素材和依赖说明。
 
---duration / --fps 控制时长与帧率；--speed 是像素/秒，--spacing 是目标间隔；--atlas 指向与模板角色顺序一致的图集。没有 --music 时输出无声视频，不会自动添加解说。输出含 architecture.mp4、cover.png、poster.png、5张关键帧和render-settings.json。纯音乐用显式音轨映射，保持原视频不变时也可重新混音。
+--duration / --fps 控制时长与帧率；--speed 是像素/秒，--spacing 是目标间隔；--atlas 指向与模板角色顺序一致的图集。没有 --music 时输出无声视频，不会自动添加解说。输出含 architecture.mp4、cover.png、poster.png、5张关键帧、render-settings.json、plush.json、plush.html和web-validation.json。plush.html可独立打开持续播放；默认字体由目标机器提供，显式字体参数会嵌入所选字体，分发时确认字体许可。纯音乐用显式音轨映射，保持原视频不变时也可重新混音。
+
+毛绒网页源码为assets/plush.html，动画通过window.seek(t)按绝对时间定位，requestAnimationFrame只用于实时播放。默认角色从首帧显示，画面中卡片和文字全为原生SVG，图片只用于毛绒角色。
 
 ## 检查
 
+- 网页检查121个时刻的节点不变性、文字画布与卡片边界，并重复定位同一时刻检查截图；仅允许Chrome细微抗锯齿差异（沿用live-panel最多50个超过24色阶的像素差异容限）。
 - 首帧必须完整显示所有节点；抽取实际编码画面确认，不能只检查源码生成的封面。
 - 节点内区在不同时间应一致；连线路径应有像素变化。比较无损源帧，避免压缩差异误报为节点动画。
 - 流动位置用曲线累计弧长插值，节点覆盖绘制在最上层。长路线元素上限34，最短路线最少4；若短线堆积，按实际可见长度降低下限。

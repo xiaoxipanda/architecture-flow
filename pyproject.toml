@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "architecture-motion-video"
-version = "0.3.0"
+version = "0.4.0"
 description = "Editorial architecture videos with flowing connectors and 3D mascots"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,4 +19,4 @@ packages = ["architecture_motion_video"]
 package-dir = {architecture_motion_video = "."}
 
 [tool.setuptools.package-data]
-architecture_motion_video = ["SKILL.md", "scripts/*.py", "assets/mascots/*.png", "assets/mascots/*.json", "references/*.md", "assets/panel-*.json", "vendor/live_panel/scripts/*.py", "vendor/live_panel/assets/*.html", "vendor/live_panel/LICENSE", "vendor/live_panel/*.md"]
+architecture_motion_video = ["SKILL.md", "scripts/*.py", "assets/mascots/*.png", "assets/mascots/*.json", "references/*.md", "assets/panel-*.json", "assets/plush.html", "vendor/live_panel/scripts/*.py", "vendor/live_panel/assets/*.html", "vendor/live_panel/LICENSE", "vendor/live_panel/*.md"]

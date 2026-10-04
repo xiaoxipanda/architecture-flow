@@ -5,7 +5,7 @@ description: Create and revise editorial architecture MP4 videos from reference 
 
 # Architecture motion video
 
-交付可播放的 MP4、封面、可编辑源码和验证记录。本 Skill 附带 12 个透明毛绒角色、固定节点渲染模板、原创音乐生成器和视频验证器。
+交付可播放的 MP4、封面、可编辑源码和验证记录。本 Skill 附带 12 个透明毛绒角色、固定节点网页渲染模板、原创音乐生成器和视频验证器。
 
 ## 制作流程
 
@@ -23,11 +23,15 @@ description: Create and revise editorial architecture MP4 videos from reference 
 
 本次迭代形成的**可选起点**：1080×1600、30fps、约每23像素一个元素、每条4至34个、160像素/秒。用户曾认为同一密度下300像素/秒过快，因此160是当前候选值，尚未得到最终效果确认。按新的参考与用户反馈调整，不将这些数字作为所有视频的硬性要求。
 
+## 渲染实现
+
+三种风格统一使用HTML/CSS/SVG + JavaScript + Python，Chrome逐帧截图，FFmpeg编码。Pillow仅用于图集裁剪和字体度量，不再逐帧绘图。毛绒内容在scripts/plush_scene.py中编辑，页面在assets/plush.html中编辑；保留生成的plush.json、plush.html、web-validation.json。页面暴露window.seek(t)，普通浏览器中由requestAnimationFrame持续播放，手动渲染模式不依赖墙钟或随机数。毛绒默认字体使用系统字体，自定义字体和角色图片嵌入生成页面，发布前确认所用字体可分发；不要将系统字体加入仓库。
+
 ## 风格选择
 
-统一使用 `--style plush|terminal-dark|light-pastel`。毛绒角色、宣传型信息图选plush；深色终端运行面板选terminal-dark；浅色粉彩运行面板选light-pastel。深色包含侧栏触发、状态条、模拟日志与终端状态行；粉彩包含侧栏、主流程和工具栏的阶段联动高亮。，不代表连接了真实遥测。不要为仅要求流动连线的用户强制添加状态日志。
+统一使用 `--style plush|terminal-dark|light-pastel`。毛绒角色、宣传型信息图选plush；深色终端运行面板选terminal-dark；浅色粉彩运行面板选light-pastel。深色包含侧栏触发、状态条、模拟日志与终端状态行；粉彩包含侧栏、主流程和工具栏的阶段联动高亮，不代表连接了真实遥测。不要为仅要求流动连线的用户强制添加状态日志。
 
-面板读取 `--panel-config` 的JSON定义，默认使用附带原创Hermes布局。`init --style terminal-dark --out terminal.json` 同时生成渲染设置和面板内容配置。配置参考 [面板schema](references/panel-config-schema.md)。面板额外需要Chrome/Chromium；自动检查几何和回放一致性，并保留可持续播放的panel.html。保持 [live-panel许可与来源](vendor/live_panel/NOTICE.md)，不要合入未获授权的第三方复刻示例。
+面板读取 `--panel-config` 的JSON定义，默认使用附带原创Hermes布局。`init --style terminal-dark --out terminal.json` 同时生成渲染设置和面板内容配置。配置参考 [面板schema](references/panel-config-schema.md)。三种风格均需要Chrome/Chromium；自动检查几何和回放一致性，并保留可持续播放的panel.html。保持 [live-panel许可与来源](vendor/live_panel/NOTICE.md)，不要合入未获授权的第三方复刻示例。
 
 ## 终端命令
 
@@ -36,7 +40,8 @@ description: Create and revise editorial architecture MP4 videos from reference 
 ## 附带资源
 
 - [角色索引](assets/mascots/manifest.json)：两套图集、12个角色、纹理矩形。
-- scripts/render_hermes_template.py：固定节点、弧长匀速连线的可编辑案例。
+- scripts/plush_scene.py与assets/plush.html：固定节点、弧长匀速连线的可编辑场景与网页模板。
+- scripts/render_hermes_template.py：保留兼容参数的Chrome毛绒导出脚本。
 - scripts/make_music.py：原创柔和键盘琶音与和弦，支持指定时长。
 - scripts/validate_video.py：完整解码与输出格式检查。
 - [运行与调整](references/rendering.md)：命令、依赖、参数及检查方式。

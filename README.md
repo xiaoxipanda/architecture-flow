@@ -13,11 +13,15 @@ Create architecture videos in three styles: plush mascot infographics, dark term
 | 大标题、毛绒角色、曲线束、圆点与文档流动 | 等宽字、触发侧栏、证据状态条、工作流、计数器与滚动日志 | 编辑式排版、粉彩卡片、共享上下文与工具侧栏、阶段联动高亮 |
 | 默认 1080×1600 | 默认 1200×1600 | 默认 1080×1440 |
 
+毛绒示例还提供 [可持续播放的网页](examples/plush.html)，下载后直接用浏览器打开。
+
 示例为 **Hermes 一人企业架构**。面板状态、计数器和日志是确定性模拟，不连接真实业务数据；本工具不会安装或配置 Hermes。两种面板使用独立编排的布局，复用 live-panel 的动效引擎。
 
 ## 安装与快速开始
 
-需要 **Python 3.10+** 和 **FFmpeg**。两种面板还需要 Chrome 或 Chromium；毛绒风格需要中文及标题字体。仓库不附带这些程序或系统字体。
+三种风格统一使用 **HTML/CSS/SVG + JavaScript + Python**：浏览器绘制画面与动画，Python 控制截图、音频和验证，FFmpeg 合成视频。Pillow 仅处理毛绒素材裁剪和字体度量，不再逐帧绘制视频。
+
+需要 **Python 3.10+、Chrome 或 Chromium、FFmpeg**；毛绒风格还需要中文及标题字体。仓库不附带这些程序或系统字体。
 
 ```sh
 git clone https://github.com/xiaoxipanda/architecture-motion-video.git
@@ -109,7 +113,7 @@ architecture-motion-video init --out render.json
 architecture-motion-video render --config render.json --out output/my-plush.mp4
 ```
 
-毛绒风格的 JSON 配置渲染参数；架构文案、角色和布局在 [Python 模板](scripts/render_hermes_template.py) 的 `roles`、卡片与 `paths` 中修改。默认使用六个工作流角色，附带六个扩展角色供新架构选择。
+毛绒风格的输入 JSON 配置渲染参数；架构文案、角色和布局在 [场景定义](scripts/plush_scene.py) 的 `ROLES`、卡片与路线中修改，页面与动画模板在 [assets/plush.html](assets/plush.html)。默认使用六个工作流角色，附带六个扩展角色供新架构选择。
 
 渲染 JSON 支持 `style`、`duration`、`fps`、`speed`、`spacing`、`music`、`ffmpeg`、`chrome`、`panel_config`、`atlas`、`cn_font`、`serif_font`、`bold_font`、`mono_font`。命令行参数优先；JSON 中的音乐、图集、字体和面板内容相对路径，以该 JSON 所在目录为基准。
 
@@ -124,9 +128,9 @@ architecture-motion-video render --style light-pastel \
 architecture-motion-video check output/pastel.mp4
 ```
 
-以 `output/pastel.mp4` 为例，辅助文件保存在 `output/pastel-assets/`：封面、关键帧、渲染参数以及自动生成的音乐。面板另外保存 `panel.json`、`panel.html` 和布局检查帧；`panel.html` 可直接在浏览器中打开并持续播放。
+以 `output/pastel.mp4` 为例，辅助文件保存在 `output/pastel-assets/`：封面、关键帧、渲染参数以及自动生成的音乐。毛绒版另外保存 `plush.json`、`plush.html` 和 `web-validation.json`；面板保存 `panel.json`、`panel.html` 和布局检查帧。三种风格的 HTML 均可直接在浏览器中打开并持续播放，角色图片已嵌入毛绒页面。毛绒默认字体使用浏览器系统字体回退，自定义字体参数会将所选字体嵌入生成页面；跨机器播放时，默认字体可能有所差异。
 
-`--poster-only` 不输出 MP4、不生成音乐，也不需要 FFmpeg；面板预览仍需要 Chrome。面板渲染会检查 120 余个时刻的布局，并重复定位时间点检查回放一致性。Chrome 使用独立临时配置，不读取用户浏览器登录状态。
+`--poster-only` 不输出 MP4、不生成音乐，也不需要 FFmpeg；三种风格的预览都需要 Chrome。毛绒版检查 121 个时刻的固定节点、文字边界及回放一致性；面板版检查 120 余个时刻的布局及回放一致性。Chrome 使用独立临时配置，不读取用户浏览器登录状态。
 
 已有输出会受到覆盖保护；需要重新生成时，换一个输出名或显式添加 `--force`。自动验证不能替代视觉审阅与实际试听。
 
@@ -156,6 +160,7 @@ Codex 中可以这样触发：
 | `SKILL.md` | 视频制作与验证流程 |
 | `cli.py` | `render`、`init`、`music`、`check` 命令 |
 | `assets/mascots/` | 两套透明 RGBA 图集，共 12 个角色及纹理区域索引 |
+| `assets/plush.html` / `scripts/plush_scene.py` | 毛绒网页动画与可编辑场景 |
 | `assets/panel-*.json` | 两种面板的默认架构内容 |
 | `scripts/` | 毛绒与面板渲染、原创音乐合成、视频验证 |
 | `references/` | 配置说明、素材用途、图像生成提示词 |

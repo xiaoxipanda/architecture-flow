@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hermes — architecture motion video</title>
+<style>
+html,body{margin:0;background:#f8f8f4}svg{display:block;width:100%;height:auto}text{white-space:pre}
+.font-cn{font-family:"Arial Unicode MS","PingFang SC","Noto Sans CJK SC",sans-serif}
+.font-serif{font-family:Georgia,serif;font-weight:700}
+.font-bold{font-family:Arial,sans-serif;font-weight:700}
+.font-mono{font-family:Menlo,"DejaVu Sans Mono",monospace}
+</style></head><body>
+<!--PLUSH_CONFIG-->
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hermes 一人企业架构，节点固定，连线持续流动"></svg>
+<script>
+'use strict';
+window.__error='';window.addEventListener('error',e=>{window.__error=e.message});
+const cfg=JSON.parse(document.getElementById('plush-config').textContent),ns='http://www.w3.org/2000/svg';
+const svg=document.getElementById('scene');svg.setAttribute('viewBox',`0 0 ${cfg.width} ${cfg.height}`);
+function node(tag,attrs,parent=svg){const n=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);parent.appendChild(n);return n}
+const defs=node('defs',{});
+const pattern=node('pattern',{id:'grid',x:40,y:286,width:22,height:22,patternUnits:'userSpaceOnUse'},defs);
+node('circle',{cx:0,cy:0,r:.6,fill:'#dfe4da'},pattern);
+const shadow=node('filter',{id:'shadow',x:'-15%',y:'-45%',width:'130%',height:'200%'},defs);
+node('feDropShadow',{dx:0,dy:8,stdDeviation:11,'flood-color':'#353a31','flood-opacity':.10},shadow);
+node('rect',{x:0,y:0,width:cfg.width,height:cfg.height,fill:'#f8f8f4'});
+node('rect',{x:40,y:286,width:1000,height:1194,fill:'url(#grid)'});
+function pale(c,a){return '#'+[1,3,5].map(i=>Math.round(parseInt(c.slice(i,i+2),16)*a+250*(1-a)).toString(16).padStart(2,'0')).join('')}
+const wires=node('g',{id:'wires'}),tokens=node('g',{id:'tokens'}),fixed=node('g',{id:'fixed'});
+for(const r of cfg.routes){for(const offset of [-7,-3,1,5]){
+ node('polyline',{points:r.samples.map(p=>`${p[0]+offset},${p[1]}`).join(' '),fill:'none',stroke:pale(r.color,.17),'stroke-width':3},wires);
+ node('polyline',{points:r.samples.map(p=>`${p[0]+offset-1},${p[1]}`).join(' '),fill:'none',stroke:pale(r.color,.34),'stroke-width':1},wires);
+}}
+for(const item of cfg.items){const d=item;let n;
+ if(d.type==='rect')n=node('rect',{x:d.x,y:d.y,width:d.w,height:d.h,rx:d.r,fill:d.fill,stroke:d.stroke,'stroke-width':d.width,...(d.shadow?{filter:'url(#shadow)'}:{})},fixed);
+ else if(d.type==='line')n=node('line',{x1:d.x1,y1:d.y1,x2:d.x2,y2:d.y2,stroke:d.color,'stroke-width':d.width},fixed);
+ else if(d.type==='circle')n=node('circle',{cx:d.x,cy:d.y,r:d.r,fill:d.fill,stroke:d.stroke,'stroke-width':d.width},fixed);
+ else if(d.type==='image')n=node('image',{x:d.x,y:d.y,width:d.w,height:d.h,href:d.src},fixed);
+ else if(d.type==='text'){n=node('text',{x:d.x,y:d.y,'font-size':d.size,fill:d.color,class:'font-'+d.font,'text-anchor':d.center?'middle':'start','data-label':d.text},fixed);n.textContent=d.text}
+}
+// Tokens sit beneath all cards and text. No layout changes or node reveals.
+const moving=[];
+cfg.routes.forEach((r,j)=>{for(let k=0;k<r.count;k++){
+ const g=node('g',{},tokens);
+ if(k%5===0){node('rect',{x:-4,y:-6,width:8,height:12,rx:2,fill:'white',stroke:pale(r.color,.9)},g);
+ for(const y of [-1,2])node('line',{x1:-2,y1:y,x2:2,y2:y,stroke:pale(r.color,.8)},g)}
+ else node('circle',{r:2.8,fill:pale(r.color,.85),stroke:'white','stroke-width':1},g);
+ moving.push({g,r,j,k});
+}});
+function bezier(p,t){const v=1-t;return [0,1].map(i=>v*v*v*p[0][i]+3*v*v*t*p[1][i]+3*v*t*t*p[2][i]+t*t*t*p[3][i])}
+function position(r,dist){let lo=0,hi=r.distances.length-1;while(lo+1<hi){const mid=(lo+hi)>>1;if(r.distances[mid]<=dist)lo=mid;else hi=mid}
+ const a=r.distances[lo],b=r.distances[hi],u=(lo+(dist-a)/(b-a))/(r.distances.length-1);return bezier(r.points,u)}
+window.seek=function(t){if(!Number.isFinite(t)||t<0)throw new Error('seek requires nonnegative finite time');
+ for(const{g,r,j,k}of moving){const dist=(t*r.speed+k*r.length/r.count+j*r.length*.081)%r.length;
+ const[x,y]=position(r,dist);g.setAttribute('transform',`translate(${x},${y})`);g.setAttribute('visibility',y<302?'hidden':'visible')}
+ window.__time=t;
+};
+// For QA: dimensions, text clipping and time-independent fixed nodes.
+window.inspectLayout=function(){const problems=[],cards=cfg.items.filter(d=>d.type==='rect'&&d.shadow);for(const n of fixed.querySelectorAll('text,image')){const b=n.getBBox();
+ if(b.x<0||b.y<0||b.x+b.width>cfg.width+.5||b.y+b.height>cfg.height+.5)problems.push('canvas: '+(n.getAttribute('data-label')||'image'));
+ const x=Number(n.getAttribute('x')),y=Number(n.getAttribute('y'));
+ const card=cards.find(c=>x>=c.x&&x<=c.x+c.w&&y>=c.y&&y<=c.y+c.h);
+ if(card&&(b.x<card.x-1||b.y<card.y-1||b.x+b.width>card.x+card.w+1||b.y+b.height>card.y+card.h+1))problems.push('card: '+(n.getAttribute('data-label')||'image'));
+ }
+ return {problems,labels:fixed.querySelectorAll('text').length,mascots:fixed.querySelectorAll('image').length,tokens:moving.length,fixed:fixed.innerHTML};};
+(async()=>{
+ try{
+  for(const[key,src]of Object.entries(cfg.fonts||{})){const face=new FontFace('custom-'+key,`url(${src})`);await face.load();document.fonts.add(face);
+   const style=document.createElement('style');style.textContent=`.font-${key}{font-family:custom-${key};font-weight:normal}`;document.head.appendChild(style)}
+  await document.fonts.ready;
+  await Promise.all([...svg.querySelectorAll('image')].map(n=>new Promise((resolve,reject)=>{const img=new Image();img.onload=resolve;img.onerror=()=>reject(new Error('Mascot image failed'));img.src=n.getAttribute('href')})));
+  window.seek(0);window.__ready=true;
+  if(!new URLSearchParams(location.search).has('manual')){const start=performance.now();function loop(now){window.seek(((now-start)/1000)%cfg.duration);requestAnimationFrame(loop)}requestAnimationFrame(loop)}
+ }catch(e){window.__error=e.message}
+})();
+</script></body></html>
