@@ -23,6 +23,10 @@ description: Create and revise editorial architecture MP4 videos from reference 
 
 本次迭代形成的**可选起点**：1080×1600、30fps、约每23像素一个元素、每条4至34个、160像素/秒。用户曾认为同一密度下300像素/秒过快，因此160是当前候选值，尚未得到最终效果确认。按新的参考与用户反馈调整，不将这些数字作为所有视频的硬性要求。
 
+## 终端命令
+
+仓库支持 `pip install .`，然后用 `architecture-motion-video render --out demo.mp4` 自动生成音乐、视频并解码检查；`init --out render.json` 保存渲染配置，`check demo.mp4` 验证视频。命令行参数优先于JSON。JSON目前仅保存渲染参数，架构文案与布局仍在模板中编辑。详见运行说明。
+
 ## 附带资源
 
 - [角色索引](assets/mascots/manifest.json)：两套图集、12个角色、纹理矩形。

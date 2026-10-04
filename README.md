@@ -43,6 +43,31 @@ FFmpeg 不在 PATH 时传入 `--ffmpeg /path/to/ffmpeg`。省略 `--music` 则�
 
 其他系统用 `--cn-font`、`--serif-font`、`--bold-font`、`--mono-font` 指定四个字体文件；中文字体必须包含所需字形。
 
+## 终端命令
+
+```sh
+python -m pip install .
+architecture-motion-video render --out output/demo.mp4
+architecture-motion-video render --out output/slow.mp4 --speed 100 --spacing 23 --duration 20
+architecture-motion-video render --out output/silent.mp4 --music none
+architecture-motion-video render --out output/custom.mp4 --music /path/to/music.wav
+architecture-motion-video check output/demo.mp4
+```
+
+默认自动生成原创纯音乐、导出视频并完整解码验证。封面、关键帧、音乐及参数保存在 `demo-assets/` 等对应目录。已有输出不会被静默覆盖，需指定新名称或 `--force`。
+
+先生成配置，再修改、渲染：
+
+```sh
+architecture-motion-video init --out render.json
+architecture-motion-video render --config render.json --out output/configured.mp4
+architecture-motion-video render --config render.json --out output/cover.mp4 --poster-only
+```
+
+JSON支持 `duration`、`fps`、`speed`、`spacing`、`music`、`ffmpeg`、`atlas`、`cn_font`、`serif_font`、`bold_font`、`mono_font`。命令行参数覆盖JSON。JSON中的音乐、图集和字体相对路径以配置文件所在目录为基准。
+
+当前JSON只配置渲染参数；架构文案和节点布局仍在Python模板中编辑，不是任意图结构的JSON引擎。`--poster-only`只生成封面和关键帧，不输出MP4，也不需要FFmpeg。
+
 ## 作为 Codex Skill 使用
 
 将整个仓库文件夹放入或链接到 `~/.codex/skills/architecture-motion-video`，保留素材、脚本和 references 目录。若该目录已存在，先保留现有版本，不直接覆盖。
