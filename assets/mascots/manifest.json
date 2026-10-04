@@ -1,0 +1,152 @@
+{
+  "sets": [
+    {
+      "asset": "workstreams.png",
+      "grid": [
+        3,
+        2
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "roles": [
+        {
+          "id": "research",
+          "texture_rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "product",
+          "texture_rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "dev",
+          "texture_rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "content",
+          "texture_rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "sales",
+          "texture_rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "ops",
+          "texture_rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "expansion.png",
+      "layout": "3 columns × 2 rows",
+      "width": 1536,
+      "height": 1024,
+      "transparent": true,
+      "roles": [
+        {
+          "id": "founder",
+          "name": "协调者",
+          "appearance": "橙色，皇冠与领结",
+          "status": "existing profile",
+          "texture_rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "reviewer",
+          "name": "审核员",
+          "appearance": "薄荷绿，眼镜与放大镜",
+          "status": "existing profile",
+          "texture_rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "finance",
+          "name": "财务",
+          "appearance": "奶油黄，遮阳帽与计算器",
+          "status": "optional future role; not configured by this asset",
+          "texture_rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "support",
+          "name": "客服",
+          "appearance": "浅蓝紫，白色耳麦",
+          "status": "optional future role; not configured by this asset",
+          "texture_rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "legal",
+          "name": "法务",
+          "appearance": "深青色，领口与天平",
+          "status": "optional future role; not configured by this asset",
+          "texture_rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "id": "data-analyst",
+          "name": "数据分析",
+          "appearance": "杏桃色，眼镜与柱状图",
+          "status": "optional future role; not configured by this asset",
+          "texture_rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    }
+  ]
+}
