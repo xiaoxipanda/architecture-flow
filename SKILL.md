@@ -1,6 +1,6 @@
 ---
 name: architecture-motion-video
-description: Create and revise editorial architecture MP4 videos from reference images or videos and verified project evidence, with fluffy 3D mascots, flowing connectors, optional original instrumental music, editable rendering source, and export validation.
+description: Create and revise editorial architecture MP4 videos from reference images or videos and verified project evidence, in plush mascot, dark terminal, or light pastel panel styles, with flowing connectors and optional original instrumental music, editable rendering source, and export validation.
 ---
 
 # Architecture motion video
@@ -23,9 +23,15 @@ description: Create and revise editorial architecture MP4 videos from reference 
 
 本次迭代形成的**可选起点**：1080×1600、30fps、约每23像素一个元素、每条4至34个、160像素/秒。用户曾认为同一密度下300像素/秒过快，因此160是当前候选值，尚未得到最终效果确认。按新的参考与用户反馈调整，不将这些数字作为所有视频的硬性要求。
 
+## 风格选择
+
+统一使用 `--style plush|terminal-dark|light-pastel`。毛绒角色、宣传型信息图选plush；深色终端运行面板选terminal-dark；浅色粉彩运行面板选light-pastel。深色包含侧栏触发、状态条、模拟日志与终端状态行；粉彩包含侧栏、主流程和工具栏的阶段联动高亮。，不代表连接了真实遥测。不要为仅要求流动连线的用户强制添加状态日志。
+
+面板读取 `--panel-config` 的JSON定义，默认使用附带原创Hermes布局。`init --style terminal-dark --out terminal.json` 同时生成渲染设置和面板内容配置。配置参考 [面板schema](references/panel-config-schema.md)。面板额外需要Chrome/Chromium；自动检查几何和回放一致性，并保留可持续播放的panel.html。保持 [live-panel许可与来源](vendor/live_panel/NOTICE.md)，不要合入未获授权的第三方复刻示例。
+
 ## 终端命令
 
-仓库支持 `pip install .`，然后用 `architecture-motion-video render --out demo.mp4` 自动生成音乐、视频并解码检查；`init --out render.json` 保存渲染配置，`check demo.mp4` 验证视频。命令行参数优先于JSON。JSON目前仅保存渲染参数，架构文案与布局仍在模板中编辑。详见运行说明。
+仓库支持 `pip install .`，然后用 `architecture-motion-video render --out demo.mp4` 自动生成音乐、视频并解码检查；`init --out render.json` 保存渲染配置，`check demo.mp4` 验证视频。命令行参数优先于JSON。plush的JSON仅保存渲染参数；面板可另用panel_config定义节点、连线与模拟状态。详见运行说明。
 
 ## 附带资源
 

@@ -1,0 +1,1277 @@
+{
+  "meta": {
+    "title": "Hermes company / illustrative panel"
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 1600,
+    "duration": 30,
+    "fps": 30
+  },
+  "theme": {
+    "preset": "terminal-dark",
+    "fontSize": 20,
+    "lineHeight": 30,
+    "colors": {
+      "pk": "#dd91bd",
+      "rd": "#efaa9c",
+      "mute": "#aab1c0"
+    },
+    "font": "\"JetBrains Mono\",\"Menlo\",\"DejaVu Sans Mono\",monospace"
+  },
+  "clock": {
+    "start": "00:01:00",
+    "rate": 1
+  },
+  "machines": {
+    "events": {
+      "type": "counter",
+      "start": 240,
+      "rate": 5,
+      "format": "comma"
+    },
+    "sources": {
+      "type": "gauge",
+      "values": [
+        0.92,
+        0.76,
+        0.55,
+        0.88,
+        0.64,
+        0.97
+      ],
+      "threshold": 0.68,
+      "period": 3.4,
+      "t0": 0.0,
+      "seed": 11,
+      "high": {
+        "label": "ready",
+        "dest": "review"
+      },
+      "low": {
+        "label": "check",
+        "dest": "worker"
+      },
+      "highColor": "gr",
+      "lowColor": "ye",
+      "log": {
+        "who": "board",
+        "c": "gr",
+        "msgs": [
+          "sources evidence"
+        ],
+        "tail": "score={value} {label} (sim)"
+      }
+    },
+    "tests": {
+      "type": "gauge",
+      "values": [
+        0.92,
+        0.76,
+        0.55,
+        0.88,
+        0.64,
+        0.97
+      ],
+      "threshold": 0.68,
+      "period": 4.0,
+      "t0": 0.4,
+      "seed": 24,
+      "high": {
+        "label": "ready",
+        "dest": "review"
+      },
+      "low": {
+        "label": "check",
+        "dest": "worker"
+      },
+      "highColor": "gr",
+      "lowColor": "ye",
+      "log": {
+        "who": "board",
+        "c": "gr",
+        "msgs": [
+          "tests evidence"
+        ],
+        "tail": "score={value} {label} (sim)"
+      }
+    },
+    "receipts": {
+      "type": "gauge",
+      "values": [
+        0.92,
+        0.76,
+        0.55,
+        0.88,
+        0.64,
+        0.97
+      ],
+      "threshold": 0.68,
+      "period": 4.6,
+      "t0": 0.8,
+      "seed": 37,
+      "high": {
+        "label": "ready",
+        "dest": "review"
+      },
+      "low": {
+        "label": "check",
+        "dest": "worker"
+      },
+      "highColor": "gr",
+      "lowColor": "ye",
+      "log": {
+        "who": "board",
+        "c": "gr",
+        "msgs": [
+          "receipts evidence"
+        ],
+        "tail": "score={value} {label} (sim)"
+      }
+    },
+    "review": {
+      "type": "triggers",
+      "color": "pu",
+      "period": 4.5,
+      "on": 3,
+      "t0": -1,
+      "callsStart": 2,
+      "items": [
+        {
+          "name": "before dispatch",
+          "adv": [
+            "> define acceptance",
+            "> bind original card"
+          ]
+        },
+        {
+          "name": "evidence missing",
+          "adv": [
+            "> return to owner",
+            "> attach real proof"
+          ]
+        },
+        {
+          "name": "before delivery",
+          "adv": [
+            "> check permission",
+            "> keep the receipt"
+          ]
+        }
+      ],
+      "log": {
+        "who": "review",
+        "c": "pu",
+        "start": {
+          "m": "{name} / inspecting",
+          "g": "simulated"
+        },
+        "end": {
+          "m": "{name} / feedback",
+          "g": "simulated"
+        }
+      }
+    },
+    "research": {
+      "type": "lane",
+      "period": 7.0,
+      "run": 4.4,
+      "off": 0.0,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 0,
+      "log": {
+        "who": "research",
+        "c": "bl",
+        "msgs": [
+          [
+            "Facts + sources / ready",
+            "simulated"
+          ]
+        ]
+      }
+    },
+    "product": {
+      "type": "lane",
+      "period": 7.5,
+      "run": 4.4,
+      "off": -0.6,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 1,
+      "log": {
+        "who": "product",
+        "c": "bl",
+        "msgs": [
+          [
+            "Scope + acceptance / ready",
+            "simulated"
+          ]
+        ]
+      }
+    },
+    "dev": {
+      "type": "lane",
+      "period": 8.0,
+      "run": 4.4,
+      "off": -1.2,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 2,
+      "log": {
+        "who": "dev",
+        "c": "bl",
+        "msgs": [
+          [
+            "Code + tests / ready",
+            "simulated"
+          ]
+        ]
+      }
+    },
+    "content": {
+      "type": "lane",
+      "period": 8.5,
+      "run": 4.4,
+      "off": -1.7999999999999998,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 3,
+      "log": {
+        "who": "content",
+        "c": "bl",
+        "msgs": [
+          [
+            "Draft + citations / ready",
+            "simulated"
+          ]
+        ]
+      }
+    },
+    "sales": {
+      "type": "lane",
+      "period": 9.0,
+      "run": 4.4,
+      "off": -2.4,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 0,
+      "log": {
+        "who": "sales",
+        "c": "bl",
+        "msgs": [
+          [
+            "Leads + proposals / ready",
+            "simulated"
+          ]
+        ]
+      }
+    },
+    "ops": {
+      "type": "lane",
+      "period": 9.5,
+      "run": 4.4,
+      "off": -3.0,
+      "busy": "running",
+      "done": [
+        "evidence ready"
+      ],
+      "phase": 1,
+      "log": {
+        "who": "ops",
+        "c": "bl",
+        "msgs": [
+          [
+            "Execute + receipts / ready",
+            "simulated"
+          ]
+        ]
+      }
+    }
+  },
+  "elements": [
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          345
+        ],
+        [
+          765,
+          420
+        ]
+      ],
+      "color": "cy",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "cy",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          602
+        ],
+        [
+          765,
+          654
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          654
+        ],
+        [
+          470,
+          654
+        ],
+        [
+          470,
+          710
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 2.7,
+        "offsets": [
+          0.5
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          654
+        ],
+        [
+          765,
+          654
+        ],
+        [
+          765,
+          710
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 2.7,
+        "offsets": [
+          0.5
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          654
+        ],
+        [
+          1060,
+          654
+        ],
+        [
+          1060,
+          710
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 2.7,
+        "offsets": [
+          0.5
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          470,
+          885
+        ],
+        [
+          470,
+          930
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 1.9,
+        "offsets": [
+          0.3
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          885
+        ],
+        [
+          765,
+          930
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 1.9,
+        "offsets": [
+          0.3
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          1060,
+          885
+        ],
+        [
+          1060,
+          930
+        ]
+      ],
+      "color": "bl",
+      "r": 10,
+      "flow": {
+        "period": 1.9,
+        "offsets": [
+          0.3
+        ],
+        "color": "bl",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          470,
+          1105
+        ],
+        [
+          470,
+          1160
+        ],
+        [
+          765,
+          1160
+        ],
+        [
+          765,
+          1200
+        ]
+      ],
+      "color": "wh",
+      "r": 10,
+      "flow": {
+        "period": 2.8,
+        "offsets": [
+          0.7
+        ],
+        "color": "wh",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          765,
+          1105
+        ],
+        [
+          765,
+          1160
+        ],
+        [
+          765,
+          1160
+        ],
+        [
+          765,
+          1200
+        ]
+      ],
+      "color": "wh",
+      "r": 10,
+      "flow": {
+        "period": 2.8,
+        "offsets": [
+          0.7
+        ],
+        "color": "wh",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          1060,
+          1105
+        ],
+        [
+          1060,
+          1160
+        ],
+        [
+          765,
+          1160
+        ],
+        [
+          765,
+          1200
+        ]
+      ],
+      "color": "wh",
+      "r": 10,
+      "flow": {
+        "period": 2.8,
+        "offsets": [
+          0.7
+        ],
+        "color": "wh",
+        "tail": 15
+      }
+    },
+    {
+      "type": "text",
+      "x": 40,
+      "y": 82,
+      "t": "",
+      "runs": [
+        {
+          "t": "HERMES COMPANY",
+          "b": 1,
+          "c": "wh"
+        },
+        {
+          "t": "  /  ",
+          "c": "dim"
+        },
+        {
+          "t": "FOUNDER + SIX WORKSTREAMS",
+          "c": "cy"
+        },
+        {
+          "t": "  /  REVIEWER",
+          "c": "pu"
+        }
+      ],
+      "w": 1120,
+      "align": "center",
+      "ls": 0.7
+    },
+    {
+      "type": "rule",
+      "x": 34,
+      "y": 112,
+      "w": 1132
+    },
+    {
+      "type": "text",
+      "x": 45,
+      "y": 149,
+      "t": "",
+      "runs": [
+        {
+          "sw": "cy"
+        },
+        {
+          "t": " coordination   ",
+          "c": "dim"
+        },
+        {
+          "sw": "bl"
+        },
+        {
+          "t": " workers   ",
+          "c": "dim"
+        },
+        {
+          "sw": "gr"
+        },
+        {
+          "t": " evidence   ",
+          "c": "dim"
+        },
+        {
+          "sw": "pu"
+        },
+        {
+          "t": " independent review",
+          "c": "dim"
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 40,
+      "y": 195,
+      "w": 275,
+      "h": 1085,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "REVIEWER",
+          "c": "pu",
+          "b": 1
+        },
+        {
+          "t": "independent check",
+          "c": "pu"
+        },
+        {
+          "trigger": [
+            "review",
+            0
+          ]
+        },
+        "",
+        {
+          "t": "Same original card",
+          "c": "mute"
+        },
+        {
+          "t": "Review evidence,",
+          "c": "mute"
+        },
+        {
+          "t": "return to owner.",
+          "c": "mute"
+        },
+        "",
+        {
+          "t": "last feedback:",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "review.adv0",
+              "c": "pu",
+              "b": 1
+            }
+          ]
+        },
+        {
+          "runs": [
+            {
+              "v": "review.adv1",
+              "c": "pu",
+              "b": 1
+            }
+          ]
+        },
+        "",
+        {
+          "runs": [
+            "checks  ",
+            {
+              "v": "review.calls",
+              "c": "pu",
+              "b": 1
+            }
+          ]
+        },
+        "",
+        {
+          "t": "Illustrative state",
+          "c": "dim"
+        },
+        "",
+        {
+          "trigger": [
+            "review",
+            1
+          ]
+        },
+        "",
+        {
+          "t": "No real metrics.",
+          "c": "mute"
+        },
+        {
+          "t": "Permission before",
+          "c": "mute"
+        },
+        {
+          "t": "external actions.",
+          "c": "mute"
+        },
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        {
+          "trigger": [
+            "review",
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tarrow",
+      "machine": "review",
+      "i": 0,
+      "from": [
+        321,
+        282
+      ],
+      "to": [
+        520,
+        282
+      ]
+    },
+    {
+      "type": "tarrow",
+      "machine": "review",
+      "i": 1,
+      "from": [
+        321,
+        702
+      ],
+      "to": [
+        350,
+        702
+      ]
+    },
+    {
+      "type": "tarrow",
+      "machine": "review",
+      "i": 2,
+      "from": [
+        321,
+        1242
+      ],
+      "to": [
+        535,
+        1242
+      ]
+    },
+    {
+      "type": "box",
+      "x": 530,
+      "y": 195,
+      "w": 470,
+      "h": 150,
+      "color": "cy",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "FOUNDER / COORDINATION",
+          "c": "cy",
+          "b": 1
+        },
+        "Goals / boundaries / acceptance",
+        {
+          "runs": [
+            {
+              "t": "native company board",
+              "c": "cy"
+            }
+          ]
+        },
+        {
+          "t": "decompose > dispatch > consolidate",
+          "c": "dim"
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 410,
+      "y": 420,
+      "w": 710,
+      "h": 182,
+      "color": "gr",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "items": [
+            {
+              "w": 360,
+              "runs": [
+                {
+                  "t": "COMPANY / EVIDENCE CHECK",
+                  "c": "gr",
+                  "b": 1
+                }
+              ]
+            },
+            {
+              "runs": [
+                {
+                  "t": "events ",
+                  "c": "dim"
+                },
+                {
+                  "v": "events",
+                  "c": "wh",
+                  "b": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "w": 170,
+              "runs": [
+                "sources"
+              ]
+            },
+            {
+              "w": 170,
+              "bar": {
+                "gauge": "sources",
+                "w": 145,
+                "h": 20,
+                "high": "gr",
+                "low": "ye"
+              }
+            },
+            {
+              "runs": [
+                {
+                  "v": "sources"
+                },
+                " ",
+                {
+                  "v": "sources.label"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "w": 170,
+              "runs": [
+                "tests"
+              ]
+            },
+            {
+              "w": 170,
+              "bar": {
+                "gauge": "tests",
+                "w": 145,
+                "h": 20,
+                "high": "gr",
+                "low": "ye"
+              }
+            },
+            {
+              "runs": [
+                {
+                  "v": "tests"
+                },
+                " ",
+                {
+                  "v": "tests.label"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "w": 170,
+              "runs": [
+                "receipts"
+              ]
+            },
+            {
+              "w": 170,
+              "bar": {
+                "gauge": "receipts",
+                "w": 145,
+                "h": 20,
+                "high": "gr",
+                "low": "ye"
+              }
+            },
+            {
+              "runs": [
+                {
+                  "v": "receipts"
+                },
+                " ",
+                {
+                  "v": "receipts.label"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "t": "scores + counters are simulated",
+          "c": "dim"
+        }
+      ],
+      "align": "left"
+    },
+    {
+      "type": "text",
+      "x": 465,
+      "y": 630,
+      "t": "Dispatcher > profile-bound workers",
+      "c": "dim"
+    },
+    {
+      "type": "box",
+      "x": 350,
+      "y": 710,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "RESEARCH",
+          "b": 1
+        },
+        "Facts + sources",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 645,
+      "y": 710,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "PRODUCT",
+          "b": 1
+        },
+        "Scope + acceptance",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 940,
+      "y": 710,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "DEV",
+          "b": 1
+        },
+        "Code + tests",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "dev"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 350,
+      "y": 930,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "CONTENT",
+          "b": 1
+        },
+        "Draft + citations",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "content"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 645,
+      "y": 930,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "SALES",
+          "b": 1
+        },
+        "Leads + proposals",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "sales"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 940,
+      "y": 930,
+      "w": 250,
+      "h": 175,
+      "color": "bl",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "OPS",
+          "b": 1
+        },
+        "Execute + receipts",
+        {
+          "t": "original task card",
+          "c": "dim"
+        },
+        {
+          "runs": [
+            {
+              "v": "ops"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "x": 535,
+      "y": 1200,
+      "w": 460,
+      "h": 80,
+      "color": "cy",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "REVIEW > AUTHORIZED DELIVERY",
+          "c": "cy",
+          "b": 1
+        },
+        "Independent evidence / real receipts"
+      ]
+    },
+    {
+      "type": "log",
+      "x": 40,
+      "y": 1340,
+      "w": 1120,
+      "rows": 4,
+      "padTop": 24,
+      "padBottom": 40,
+      "title": "simulated session log",
+      "titleW": 270,
+      "cols": [
+        {
+          "key": "time",
+          "x": 0
+        },
+        {
+          "key": "who",
+          "x": 140
+        },
+        {
+          "key": "m",
+          "x": 280
+        },
+        {
+          "key": "g",
+          "x": 790
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 40,
+      "y": 1537,
+      "t": "",
+      "runs": [
+        {
+          "t": "~/hermes-company $ ",
+          "c": "gr"
+        },
+        {
+          "t": "workflow --board company  ",
+          "c": "fg"
+        },
+        {
+          "v": "review.status"
+        },
+        {
+          "t": "   events "
+        },
+        {
+          "v": "events",
+          "c": "gr"
+        },
+        {
+          "cursor": true,
+          "c": "gr"
+        }
+      ]
+    }
+  ],
+  "credit": {
+    "text": "Hermes illustrative architecture / motion inspired by live-panel / NOT LIVE TELEMETRY",
+    "y": 1585,
+    "size": 12
+  },
+  "titlebar": {
+    "text": "~/hermes-company \u2014 zsh \u2014 simulated session"
+  }
+}

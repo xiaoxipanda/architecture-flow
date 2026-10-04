@@ -1,0 +1,999 @@
+{
+  "meta": {
+    "title": "Hermes company / illustrative panel"
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1440,
+    "duration": 30,
+    "fps": 30
+  },
+  "theme": {
+    "preset": "light-pastel",
+    "fontSize": 17,
+    "lineHeight": 26,
+    "colors": {
+      "cy": "#3875ce",
+      "gr": "#5a962b",
+      "ye": "#bc8d12",
+      "pu": "#8550c9",
+      "pk": "#c266a6",
+      "rd": "#e25761",
+      "ink": "#15171a",
+      "bluefill": "#e7efff",
+      "greenfill": "#eaf5dd",
+      "goldfill": "#fff5d8",
+      "purplefill": "#f0e9fb",
+      "rosefill": "#fde8ee",
+      "white": "#ffffff"
+    }
+  },
+  "clock": {
+    "start": "00:01:00",
+    "rate": 1
+  },
+  "machines": {
+    "seq": {
+      "type": "cycle",
+      "period": 2.8,
+      "values": [
+        {
+          "t": "goal"
+        },
+        {
+          "t": "founder"
+        },
+        {
+          "t": "dispatch"
+        },
+        {
+          "t": "research"
+        },
+        {
+          "t": "product"
+        },
+        {
+          "t": "dev"
+        },
+        {
+          "t": "content"
+        },
+        {
+          "t": "sales"
+        },
+        {
+          "t": "ops"
+        },
+        {
+          "t": "review"
+        },
+        {
+          "t": "delivery"
+        }
+      ]
+    }
+  },
+  "elements": [
+    {
+      "type": "text",
+      "x": 0,
+      "y": 94,
+      "t": "",
+      "w": 1080,
+      "align": "center",
+      "size": 56,
+      "font": "Georgia,\"Noto Serif CJK SC\",serif",
+      "runs": [
+        {
+          "t": "Hermes",
+          "c": "rd",
+          "b": 1
+        },
+        {
+          "t": " 一人企业架构",
+          "c": "ink",
+          "b": 1
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 151,
+      "t": "共享背景 · 原生看板 · 独立验收",
+      "w": 1080,
+      "align": "center",
+      "size": 20,
+      "c": "dim"
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          540,
+          270
+        ],
+        [
+          540,
+          320
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          540,
+          410
+        ],
+        [
+          540,
+          465
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          540,
+          555
+        ],
+        [
+          540,
+          615
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          540,
+          990
+        ],
+        [
+          540,
+          1040
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          540,
+          1130
+        ],
+        [
+          540,
+          1210
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          250,
+          705
+        ],
+        [
+          265,
+          705
+        ],
+        [
+          265,
+          360
+        ],
+        [
+          280,
+          360
+        ]
+      ],
+      "color": "pu",
+      "r": 10,
+      "flow": {
+        "period": 4,
+        "offsets": [
+          0
+        ],
+        "color": "pu",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          800,
+          790
+        ],
+        [
+          830,
+          790
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 1.8,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          940,
+          990
+        ],
+        [
+          940,
+          1085
+        ],
+        [
+          800,
+          1085
+        ]
+      ],
+      "color": "rd",
+      "r": 10,
+      "flow": {
+        "period": 3,
+        "offsets": [
+          0
+        ],
+        "color": "rd",
+        "tail": 15
+      }
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          280,
+          1085
+        ],
+        [
+          120,
+          1085
+        ],
+        [
+          120,
+          990
+        ]
+      ],
+      "color": "pu",
+      "r": 10,
+      "flow": {
+        "period": 3.3,
+        "offsets": [
+          0
+        ],
+        "color": "pu",
+        "tail": 15
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 200,
+      "w": 520,
+      "h": 70,
+      "color": "gr",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "你确定方向 / USER GOAL",
+          "b": 1,
+          "c": "gr"
+        },
+        {
+          "t": "目标、验收标准与授权范围",
+          "size": 15
+        }
+      ],
+      "fill": "greenfill",
+      "when": {
+        "var": "seq.i",
+        "eq": "0"
+      },
+      "then": {
+        "glow": "gr",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 320,
+      "w": 520,
+      "h": 90,
+      "color": "cy",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "01  Founder / 目标拆解",
+          "b": 1,
+          "c": "cy"
+        },
+        {
+          "t": "拆分任务、设定依赖、综合结果",
+          "size": 15
+        }
+      ],
+      "fill": "bluefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "1"
+      },
+      "then": {
+        "glow": "cy",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 465,
+      "w": 520,
+      "h": 90,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "02  Dispatcher / 原生调度",
+          "b": 1,
+          "c": "ye"
+        },
+        {
+          "t": "company 看板 → 绑定角色的 Workers",
+          "size": 15
+        }
+      ],
+      "fill": "goldfill",
+      "when": {
+        "var": "seq.i",
+        "eq": "2"
+      },
+      "then": {
+        "glow": "ye",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 615,
+      "w": 520,
+      "h": 375,
+      "color": "line",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "六条专业工作流 / WORKSTREAMS",
+          "b": 1,
+          "c": "ink"
+        }
+      ],
+      "fill": "white",
+      "container": true,
+      "dash": true
+    },
+    {
+      "type": "box",
+      "x": 295,
+      "y": 675,
+      "w": 240,
+      "h": 80,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Research / 研究",
+          "b": 1,
+          "c": "ye"
+        },
+        {
+          "t": "可追溯的来源与结论",
+          "size": 15
+        }
+      ],
+      "fill": "goldfill",
+      "when": {
+        "var": "seq.i",
+        "eq": "3"
+      },
+      "then": {
+        "glow": "ye",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 545,
+      "y": 675,
+      "w": 240,
+      "h": 80,
+      "color": "cy",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Product / 产品",
+          "b": 1,
+          "c": "cy"
+        },
+        {
+          "t": "范围、方案与验收标准",
+          "size": 15
+        }
+      ],
+      "fill": "bluefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "4"
+      },
+      "then": {
+        "glow": "cy",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 295,
+      "y": 773,
+      "w": 240,
+      "h": 80,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Dev / 开发",
+          "b": 1,
+          "c": "pu"
+        },
+        {
+          "t": "实现代码并验证测试",
+          "size": 15
+        }
+      ],
+      "fill": "purplefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "5"
+      },
+      "then": {
+        "glow": "pu",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 545,
+      "y": 773,
+      "w": 240,
+      "h": 80,
+      "color": "pk",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Content / 内容",
+          "b": 1,
+          "c": "pk"
+        },
+        {
+          "t": "核实内容、整理草稿",
+          "size": 15
+        }
+      ],
+      "fill": "rosefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "6"
+      },
+      "then": {
+        "glow": "pk",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 295,
+      "y": 871,
+      "w": 240,
+      "h": 80,
+      "color": "gr",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Sales / 销售",
+          "b": 1,
+          "c": "gr"
+        },
+        {
+          "t": "线索依据与销售方案",
+          "size": 15
+        }
+      ],
+      "fill": "greenfill",
+      "when": {
+        "var": "seq.i",
+        "eq": "7"
+      },
+      "then": {
+        "glow": "gr",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 545,
+      "y": 871,
+      "w": 240,
+      "h": 80,
+      "color": "rd",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Ops / 运营",
+          "b": 1,
+          "c": "rd"
+        },
+        {
+          "t": "授权执行与真实回执",
+          "size": 15
+        }
+      ],
+      "fill": "rosefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "8"
+      },
+      "then": {
+        "glow": "rd",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 20,
+      "y": 465,
+      "w": 230,
+      "h": 525,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "SHARED CONTEXT",
+          "b": 1,
+          "c": "pu"
+        }
+      ],
+      "fill": "purplefill",
+      "container": true
+    },
+    {
+      "type": "box",
+      "x": 32,
+      "y": 540,
+      "w": 206,
+      "h": 112,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "目标与边界",
+          "b": 1,
+          "c": "pu"
+        },
+        {
+          "t": "任务背景、范围与授权",
+          "size": 15
+        }
+      ],
+      "fill": "white"
+    },
+    {
+      "type": "box",
+      "x": 32,
+      "y": 682,
+      "w": 206,
+      "h": 112,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "共享背景",
+          "b": 1,
+          "c": "pu"
+        },
+        {
+          "t": "文档、客户与品牌语气",
+          "size": 15
+        }
+      ],
+      "fill": "white"
+    },
+    {
+      "type": "box",
+      "x": 32,
+      "y": 824,
+      "w": 206,
+      "h": 112,
+      "color": "pu",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "证据与反馈",
+          "b": 1,
+          "c": "pu"
+        },
+        {
+          "t": "来源、结果与改进依据",
+          "size": 15
+        }
+      ],
+      "fill": "white"
+    },
+    {
+      "type": "box",
+      "x": 830,
+      "y": 465,
+      "w": 230,
+      "h": 525,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "CONNECTED TOOLS",
+          "b": 1,
+          "c": "ye"
+        }
+      ],
+      "fill": "goldfill",
+      "container": true
+    },
+    {
+      "type": "box",
+      "x": 842,
+      "y": 540,
+      "w": 206,
+      "h": 112,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "检索与来源",
+          "b": 1,
+          "c": "ye"
+        },
+        {
+          "t": "核实信息、保留引用",
+          "size": 15
+        }
+      ],
+      "fill": "white",
+      "when": {
+        "var": "seq.i",
+        "eq": "3"
+      },
+      "then": {
+        "glow": "ye",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 842,
+      "y": 682,
+      "w": 206,
+      "h": 112,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "代码与测试",
+          "b": 1,
+          "c": "ye"
+        },
+        {
+          "t": "实现、测试、记录证据",
+          "size": 15
+        }
+      ],
+      "fill": "white",
+      "when": {
+        "var": "seq.i",
+        "eq": "5"
+      },
+      "then": {
+        "glow": "ye",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 842,
+      "y": 824,
+      "w": 206,
+      "h": 112,
+      "color": "ye",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "Chrome 执行",
+          "b": 1,
+          "c": "ye"
+        },
+        {
+          "t": "授权操作、保存回执",
+          "size": 15
+        }
+      ],
+      "fill": "white",
+      "when": {
+        "var": "seq.i",
+        "eq": "8"
+      },
+      "then": {
+        "glow": "ye",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 1040,
+      "w": 520,
+      "h": 90,
+      "color": "rd",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "03  Reviewer / 独立验收",
+          "b": 1,
+          "c": "rd"
+        },
+        {
+          "t": "同一张原卡：验收通过，或退回原执行者",
+          "size": 15
+        }
+      ],
+      "fill": "rosefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "9"
+      },
+      "then": {
+        "glow": "rd",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 280,
+      "y": 1210,
+      "w": 240,
+      "h": 80,
+      "color": "gr",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "证据与交付",
+          "b": 1,
+          "c": "gr"
+        },
+        {
+          "t": "来源 / 测试 / 回执",
+          "size": 15
+        }
+      ],
+      "fill": "greenfill",
+      "when": {
+        "var": "seq.i",
+        "eq": "10"
+      },
+      "then": {
+        "glow": "gr",
+        "border": 3
+      }
+    },
+    {
+      "type": "box",
+      "x": 560,
+      "y": 1210,
+      "w": 240,
+      "h": 80,
+      "color": "cy",
+      "pad": [
+        12,
+        14,
+        14
+      ],
+      "lines": [
+        {
+          "t": "你审核与授权",
+          "b": 1,
+          "c": "cy"
+        },
+        {
+          "t": "业务决策 / 后续反馈",
+          "size": 15
+        }
+      ],
+      "fill": "bluefill",
+      "when": {
+        "var": "seq.i",
+        "eq": "10"
+      },
+      "then": {
+        "glow": "cy",
+        "border": 3
+      }
+    },
+    {
+      "type": "text",
+      "x": 75,
+      "y": 1350,
+      "t": "",
+      "w": 930,
+      "align": "center",
+      "size": 19,
+      "runs": [
+        {
+          "t": "当前模拟阶段：",
+          "c": "dim"
+        },
+        {
+          "v": "seq",
+          "c": "cy",
+          "b": 1
+        },
+        {
+          "t": "   目标 → 执行 → 验收 → 改进",
+          "c": "ink"
+        }
+      ]
+    }
+  ],
+  "credit": {
+    "text": "Hermes 架构示意 · 状态为模拟 · live-panel 动效引擎 · 不代表真实业务执行",
+    "y": 1425,
+    "size": 12
+  }
+}

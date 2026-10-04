@@ -29,3 +29,13 @@ python3 scripts/validate_video.py /absolute/output/architecture.mp4 --ffmpeg /ab
 - 完整解码失败时修复后重新检查；视觉检查与解码检查分别记录。
 - 用FFmpeg volumedetect检查音乐平均值与峰值，避免削波；工具检查不能替代试听。当前原创生成器峰值约0.38，开头2秒、结尾3.5秒淡入淡出。
 - 保存参考来源、架构事实依据、渲染参数、音频来源与验证报告；最终说明视频是架构示意还是实际业务执行记录。
+
+## 运行面板风格
+
+CLI `render --style terminal-dark` 或 `--style light-pastel` 使用vendor/live_panel中的MIT引擎及assets/panel-terminal.json或assets/panel-pastel.json。默认所有节点完整显示，状态与日志是确定性模拟。需要Chrome/Chromium，可用--chrome显式指定；不会使用用户的登录配置。速度、密度和音乐仍由统一CLI处理。
+
+`init --style terminal-dark --out terminal.json`会生成terminal.json与terminal-panel.json，前者是渲染参数，后者是架构内容。面板JSON允许不同画布尺寸，输出尺寸由canvas解析；完整解码校验使用实际尺寸。主题由CLI选定风格覆盖。适配器均匀设置流动点的时间偏移，并在每个节点上层绘制节点文本。
+
+输出附带panel.html、panel.json、封面、关键帧和布局检查截图。使用上游checker抽查120余个时间点并重放，检查文字溢出、节点重叠和确定性；再验证最终MP4。参考panel-config-schema.md定义新架构，务必在画面上标明模拟状态。
+
+风格默认速度与密度分别设置：plush为160像素/秒、23像素间距；两种运行面板为80像素/秒、180像素间距，以接近原live-panel的稀疏包与短拖尾。用户可显式覆盖。深色版默认1200×1600；粉彩版1080×1440。两个主题使用不同布局，而非给同一网格换色。
